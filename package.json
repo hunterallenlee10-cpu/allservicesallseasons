@@ -1,0 +1,30 @@
+{
+  "name": "allservicesallseasons",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "images": "node scripts/build-images.mjs",
+    "brand-assets": "node scripts/build-brand-assets.mjs"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "framer-motion": "^14.14.0",
+    "lucide-react": "^1.72.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^7.0.2"
+  }
+}

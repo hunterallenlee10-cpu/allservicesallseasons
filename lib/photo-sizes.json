@@ -1,0 +1,485 @@
+{
+  "10": {
+    "file": "10-basement-02-mid-job-bar-corner",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "11": {
+    "file": "11-basement-03-TO-light-walls-theater",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "12": {
+    "file": "12-basement-04-TO-dining-and-lounge",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "13": {
+    "file": "13-basement-05-TO-stairs-and-seating",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "14": {
+    "file": "14-bookshelf-01-first-frame-on-shop-floor",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "15": {
+    "file": "15-bookshelf-02-carcass-built",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "16": {
+    "file": "16-bookshelf-03-raw-beside-painted",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "17": {
+    "file": "17-bookshelf-04-painted-gray",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "18": {
+    "file": "18-bookshelf-05-installed-with-books",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "19": {
+    "file": "19-deck-steps-01-new-build-raw-lumber",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "20": {
+    "file": "20-deck-steps-02-new-build-front",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "21": {
+    "file": "21-deck-steps-03-TO-stained",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "22": {
+    "file": "22-deck-steps-04-TO-stained-front",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "23": {
+    "file": "23-garden-bed-01-FROM-winter-bare",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "24": {
+    "file": "24-garden-bed-02-TO-fresh-mulch",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "25": {
+    "file": "25-garden-bed-03-FROM-weeds-and-debris",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "26": {
+    "file": "26-garden-bed-04-TO-house-front-mulched",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "27": {
+    "file": "27-mulched-bed-along-entry-wall",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "28": {
+    "file": "28-flower-bed-along-driveway-tall",
+    "width": 731,
+    "height": 1080,
+    "widths": [
+      400,
+      640
+    ]
+  },
+  "29": {
+    "file": "29-house-front-island-bed-stone-border",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "30": {
+    "file": "30-lawn-and-beds-house-front-small",
+    "width": 800,
+    "height": 543,
+    "widths": [
+      400,
+      640
+    ]
+  },
+  "31": {
+    "file": "31-mailbox-01-FROM-knocked-off",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "32": {
+    "file": "32-mailbox-02-FROM-old-post",
+    "width": 540,
+    "height": 1080,
+    "widths": [
+      400
+    ]
+  },
+  "33": {
+    "file": "33-mailbox-03-TO-new-post-and-box",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "34": {
+    "file": "34-mailbox-04-TO-street-view",
+    "width": 900,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "35": {
+    "file": "35-window-well-01-FROM-rusted",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "36": {
+    "file": "36-window-well-02-TO-new-galvanized",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "37": {
+    "file": "37-closet-01-FROM-wire-shelf",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "38": {
+    "file": "38-closet-02-TO-wood-shelves-and-rod",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "39": {
+    "file": "39-brick-rowhome-porch-white-columns",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "40": {
+    "file": "40-porch-deck-floor-dark-railing",
+    "width": 1080,
+    "height": 830,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "41": {
+    "file": "41-brick-porch-floor-cleaned",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "42": {
+    "file": "42-porch-steps-new-treads-white-rail",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "43": {
+    "file": "43-side-entry-steps-stained-brown",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "44": {
+    "file": "44-stone-edging-along-bed",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "45": {
+    "file": "45-blue-front-door-fresh-trim-tall",
+    "width": 796,
+    "height": 1080,
+    "widths": [
+      400,
+      640
+    ]
+  },
+  "46": {
+    "file": "46-porch-floor-FROM-captioned-small",
+    "width": 610,
+    "height": 414,
+    "widths": [
+      400
+    ]
+  },
+  "47": {
+    "file": "47-porch-floor-TO-captioned-small",
+    "width": 610,
+    "height": 414,
+    "widths": [
+      400
+    ]
+  },
+  "48": {
+    "file": "48-siding-FROM-captioned-small",
+    "width": 610,
+    "height": 414,
+    "widths": [
+      400
+    ]
+  },
+  "49": {
+    "file": "49-siding-TO-captioned-small",
+    "width": 610,
+    "height": 414,
+    "widths": [
+      400
+    ]
+  },
+  "01": {
+    "file": "01-gazebo-finished-wide-BEST",
+    "width": 2000,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828,
+      1080,
+      1600
+    ]
+  },
+  "02": {
+    "file": "02-custom-bookshelf-full-of-books-wide",
+    "width": 2000,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828,
+      1080,
+      1600
+    ]
+  },
+  "03": {
+    "file": "03-porch-steps-cream-finish-wide",
+    "width": 2000,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828,
+      1080,
+      1600
+    ]
+  },
+  "04": {
+    "file": "04-gazebo-01-FROM-bare-paver-patio",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "05": {
+    "file": "05-gazebo-02-kit-laid-out-on-tarp",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "06": {
+    "file": "06-gazebo-03-frame-going-up",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "07": {
+    "file": "07-gazebo-04-crew-fastening-roof-ON-THE-JOB",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "08": {
+    "file": "08-gazebo-05-TO-finished-gazebo",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  },
+  "09": {
+    "file": "09-basement-01-FROM-dark-panelling",
+    "width": 1080,
+    "height": 1080,
+    "widths": [
+      400,
+      640,
+      828
+    ]
+  }
+}
