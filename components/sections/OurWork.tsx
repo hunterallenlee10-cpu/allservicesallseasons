@@ -98,10 +98,10 @@ export function OurWork() {
             </figure>
             <div className="flex flex-col justify-between gap-6 rounded-[10px] border border-ink/20 p-6 lg:col-span-4 lg:mb-8 lg:p-8">
               <div>
-                <p className="label-caps text-ink/70">On this page</p>
+                <p className="label-caps text-ink/70">In this gallery</p>
                 <p className="display mt-4 text-[4rem] leading-[0.9] sm:text-[5.5rem]">{counts.all}</p>
                 <p className="mt-4 text-lg leading-normal">
-                  Real photos from real jobs. Gazebos, basements, garden beds, mailboxes. No stock pictures.
+                  Every one from a real job. Gazebos, basements, garden beds, mailboxes.
                 </p>
               </div>
               <QuoteButton variant="dark" className="self-start" />

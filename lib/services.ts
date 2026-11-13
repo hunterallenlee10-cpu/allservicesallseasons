@@ -150,6 +150,8 @@ export type Season = {
   label: string;
   jobs: ServiceId[];
   photo: PhotoId | null;
+  // True when the photo is a stock stand-in, not the owner's. Shown with a small label.
+  stockPhoto?: boolean;
   placeholder?: string;
   // Season bar at the top of the page.
   bar: string;
@@ -203,8 +205,9 @@ export const SEASONS: Record<SeasonId, Season> = {
     id: "winter",
     label: "Winter",
     jobs: ["snow-removal"],
-    photo: null,
-    placeholder: "Photo: snow removal, from All Services All Seasons",
+    // DRAFT: public-domain stock photo until the owner supplies a real snow removal photo.
+    photo: "stock-snow",
+    stockPhoto: true,
     bar: "Snow is on the way. Get on the snow removal list before the first storm.",
     quoteJobs: ["snow-removal"],
     band: {
