@@ -44,6 +44,7 @@ Search the code for `DRAFT` and `Sample`. Each one needs the owner's answer.
 - [ ] The mascot's name. The old logo file is called "Fred Green Shirt". The site does not name it.
 - [ ] Sample reviews: replace with real Google reviews (`components/sections/Reviews.tsx`), then add `review` markup only if the reviews are real and shown on the page
 - [ ] Real photos for snow removal, mowing, roofing, plumbing, electrical and flooring work
+- [ ] Replace the stock snow removal photo on the Winter tab with a real one (`lib/services.ts`, `assets/stock/CREDITS.md`). It is labelled "Stock photo" on the page until then.
 - [ ] Update the dates in `app/sitemap.ts` when content changes
 
 ## 5. Re-test

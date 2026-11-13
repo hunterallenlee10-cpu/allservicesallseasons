@@ -138,6 +138,12 @@ export function Seasons() {
                       : "size-full object-cover lg:absolute lg:inset-0"
                   }
                 />
+                {/* Honest label: this one is a stand-in, not one of his job photos. */}
+                {season.stockPhoto ? (
+                  <span className="label-caps absolute bottom-2.5 left-2.5 rounded-[4px] border border-rule bg-ink px-2 py-1.5 text-[0.6875rem] text-paper">
+                    Stock photo
+                  </span>
+                ) : null}
               </div>
             ) : (
               <PlaceholderPhoto

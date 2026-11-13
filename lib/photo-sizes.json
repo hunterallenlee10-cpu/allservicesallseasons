@@ -525,5 +525,17 @@
       720,
       900
     ]
+  },
+  "stock-snow": {
+    "file": "stock-snow-shoveling-sidewalk",
+    "width": 1920,
+    "height": 1280,
+    "widths": [
+      400,
+      560,
+      720,
+      900,
+      1400
+    ]
   }
 }

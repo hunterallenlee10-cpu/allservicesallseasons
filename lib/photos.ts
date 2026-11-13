@@ -55,6 +55,8 @@ const ALT: Record<PhotoId, string> = {
   "47": "New porch floor boards, with the owner's own caption: To this.",
   "48": "Mildewed gray siding with a ladder, with the owner's own caption: From this...",
   "49": "The same siding clean, with the owner's own caption: To this.",
+  // Stock stand-in, not the owner's photo. See assets/stock/CREDITS.md.
+  "stock-snow": "A person in a teal parka shovels snow off a sidewalk with an orange shovel. Stock photo.",
 };
 
 export type Photo = {

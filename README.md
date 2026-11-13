@@ -49,4 +49,6 @@ footer. Live mode is indexable. See `SEO-LAUNCH.md`.
 The owner's originals are in `assets/raw`. `npm run images` crops and converts
 them to responsive WebP in `public/images` and writes `lib/photo-sizes.json`.
 `npm run brand-assets` rebuilds the favicon and app icons from the logo.
-Only the owner's own photos are used. No stock or generated images.
+The gallery and project stories use only the owner's own photos. One stand-in is used
+where he has no photo yet: the Winter tab shows a public-domain stock photo, labelled
+"Stock photo" on the page. Source and licence are in `assets/stock/CREDITS.md`.

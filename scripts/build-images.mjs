@@ -66,6 +66,15 @@ const CROPS = {
   "40": { left: 0, top: 250, width: 1080, height: 830 },
 };
 
+// Stand-in photos that are not the owner's. Kept apart so they are easy to
+// find and replace. See assets/stock/CREDITS.md for source and licence.
+const STOCK = {
+  "stock-snow": {
+    src: "assets/stock/snow-shoveling-sidewalk-fema-40421.jpg",
+    file: "stock-snow-shoveling-sidewalk",
+  },
+};
+
 const LADDER = [400, 560, 720, 900, 1400];
 
 async function ensureNamed(id) {
@@ -90,6 +99,17 @@ async function buildPhotos() {
     }
     await sharp(buf).webp({ quality: 78, effort: 6 }).toFile(path.join(OUT, `${NAMES[id]}.webp`));
     sizes[id] = { file: NAMES[id], width: meta.width, height: meta.height, widths };
+  }
+  for (const [id, stock] of Object.entries(STOCK)) {
+    const buf = await sharp(stock.src).rotate().toBuffer();
+    const meta = await sharp(buf).metadata();
+    const widths = LADDER.filter((w) => w < meta.width);
+    for (const w of widths) {
+      await sharp(buf).resize({ width: w }).webp({ quality: 72, effort: 6 })
+        .toFile(path.join(OUT, `${stock.file}-${w}w.webp`));
+    }
+    await sharp(buf).webp({ quality: 78, effort: 6 }).toFile(path.join(OUT, `${stock.file}.webp`));
+    sizes[id] = { file: stock.file, width: meta.width, height: meta.height, widths };
   }
   await fs.writeFile("lib/photo-sizes.json", JSON.stringify(sizes, null, 2) + "\n");
   console.log(`photos: ${Object.keys(sizes).length}`);
