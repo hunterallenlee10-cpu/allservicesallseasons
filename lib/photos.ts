@@ -87,6 +87,7 @@ export function photoSrcSet(id: PhotoId): string {
 export const LOGO = {
   png: "/images/00-logo-logo-mascot-transparent.png",
   webp: "/images/00-logo-logo-mascot-transparent.webp",
+  small: "/images/00-logo-logo-mascot-transparent-168h.webp",
   width: logoSize.width,
   height: logoSize.height,
   alt: "All Services All Seasons, LLC logo: a bearded man in a lime hoodie with open arms",

@@ -45,29 +45,29 @@ Season bar, nav, 1 Hero, 2 All services. All seasons., 3 Start to Finish, 4 Serv
 ## Build order
 
 - [x] Phase 0: assets downloaded, viewed, cropped and converted
-- [ ] Phase 1: scaffold, tokens, fonts, season bar, nav, hero with the "From this, to this" sweep, footer
-- [ ] Phase 2: Season Switch, Start to Finish with all eight projects
-- [ ] Phase 3: services bento, Our Work with filters and lightbox
-- [ ] Phase 4: Meet Eric, how it works, seasonal band, reviews, FAQ, final call to action
-- [ ] Phase 5: Punch List, every button wired with the right pre-ticked jobs, prefilled SMS, mobile sticky bar, `/contact`
-- [ ] Phase 6: launch switch, titles and descriptions, single h1, JSON-LD, robots and sitemap, `llms.txt`, OG image, favicon, 404, `SEO-LAUNCH.md`
-- [ ] Phase 6b: Lighthouse, mobile and desktop, both modes, production build
-- [ ] Phase 7: final review, commit, push
+- [x] Phase 1: scaffold, tokens, fonts, season bar, nav, hero with the "From this, to this" sweep, footer
+- [x] Phase 2: Season Switch, Start to Finish with all eight projects
+- [x] Phase 3: services bento, Our Work with filters and lightbox
+- [x] Phase 4: Meet Eric, how it works, seasonal band, reviews, FAQ, final call to action
+- [x] Phase 5: Punch List, every button wired with the right pre-ticked jobs, prefilled SMS, mobile sticky bar, `/contact`
+- [x] Phase 6: launch switch, titles and descriptions, single h1, JSON-LD, robots and sitemap, `llms.txt`, OG image, favicon, 404, `SEO-LAUNCH.md`
+- [x] Phase 6b: Lighthouse, mobile and desktop, both modes, production build
+- [x] Phase 7: final review, commit, push
 
 ## Final review checklist
 
-- [ ] The hero alone would sell the job. The sweep plays once. At 375px the headline and primary button are visible without scrolling.
-- [ ] Start to Finish scrubs through all eight projects in the right order with mouse, touch and keyboard.
-- [ ] The Season Switch opens on the season that matches today's date.
-- [ ] Every "Get My Quote" button opens the Punch List with the right jobs ticked. Phone, text and email links work.
-- [ ] Every item in "Things only this business has" is on the page.
-- [ ] The company name is spelled "All Services All Seasons, LLC" everywhere.
-- [ ] Zero em dashes, zero double hyphens in copy, zero stock or AI images, zero invented facts.
-- [ ] Sample reviews, season grouping, seasonal wording, Nextdoor count and other draft copy are labelled or commented.
-- [ ] No photo is shown larger than its native size. No caption adds a town, price or customer.
-- [ ] Max 2 fonts, 3 colours plus text, motion in only 2 sections, no cursor effects, loading intro or glow.
-- [ ] Mobile at 375px: no overflow, burger works, sticky call / text / quote bar works.
-- [ ] Footer on both pages, concept line in demo mode. Demo serves `noindex, nofollow`. Live serves `index, follow`, the sitemap and no concept line.
-- [ ] Open Graph image and favicon are his.
-- [ ] Lighthouse SEO 100 in live mode, the other three 90 or higher. In demo mode the only failing SEO audit is indexing.
-- [ ] One h1 per page with the service and the town. Unique titles and descriptions. JSON-LD validates and claims nothing untrue.
+- [x] The hero alone would sell the job. The sweep plays once. At 375px the headline and primary button are visible without scrolling.
+- [x] Start to Finish scrubs through all eight projects in the right order with mouse, touch and keyboard.
+- [x] The Season Switch opens on the season that matches today's date.
+- [x] Every "Get My Quote" button opens the Punch List with the right jobs ticked. Phone, text and email links work.
+- [x] Every item in "Things only this business has" is on the page.
+- [x] The company name is spelled "All Services All Seasons, LLC" everywhere.
+- [x] Zero em dashes, zero double hyphens in copy, zero stock or AI images, zero invented facts.
+- [x] Sample reviews, season grouping, seasonal wording, Nextdoor count and other draft copy are labelled or commented.
+- [x] No photo is shown larger than its native size. No caption adds a town, price or customer.
+- [x] Max 2 fonts, 3 colours plus text, motion in only 2 sections, no cursor effects, loading intro or glow.
+- [x] Mobile at 375px: no overflow, burger works, sticky call / text / quote bar works.
+- [x] Footer on both pages, concept line in demo mode. Demo serves `noindex, nofollow`. Live serves `index, follow`, the sitemap and no concept line.
+- [x] Open Graph image and favicon are his.
+- [x] Lighthouse SEO 100 in live mode, the other three 90 or higher. In demo mode the only failing SEO audit is indexing.
+- [x] One h1 per page with the service and the town. Unique titles and descriptions. JSON-LD validates and claims nothing untrue.

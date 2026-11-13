@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Inline the small stylesheet so first paint does not wait on a second request.
+  experimental: { inlineCss: true },
   async headers() {
     return [
       {
