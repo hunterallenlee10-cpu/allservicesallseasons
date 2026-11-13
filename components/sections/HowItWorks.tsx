@@ -12,7 +12,7 @@ const STEPS = [
 // Three steps on one ticket, each with its own tick box.
 export function HowItWorks() {
   return (
-    <section aria-labelledby="how-title" className="section-y border-t border-rule">
+    <section aria-labelledby="how-title" className="below-fold section-y border-t border-rule">
       <div className="shell">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading index="06" label="How it works" id="how-title" title="Three steps. Done." />

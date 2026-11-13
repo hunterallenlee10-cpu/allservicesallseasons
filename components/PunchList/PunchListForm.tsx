@@ -75,7 +75,7 @@ export function PunchListForm({ variant }: { variant: "modal" | "inline" }) {
     const place = placeLine(form);
     return (
       <div className={shell}>
-        <div ref={bodyRef} className={`quick-fade px-5 pb-6 pt-6 sm:px-8 sm:pt-8 ${modal ? "min-h-0 flex-1 overflow-y-auto" : ""}`}>
+        <div ref={bodyRef} className={`quick-fade px-5 pb-6 pt-6 sm:px-8 sm:pt-8 ${modal ? "relative min-h-0 flex-1 overflow-y-auto overscroll-contain" : ""}`}>
           <span className="grid size-12 place-items-center rounded-[10px] bg-lime">
             <Check className="size-7 text-ink" strokeWidth={3} aria-hidden="true" />
           </span>
@@ -204,7 +204,7 @@ export function PunchListForm({ variant }: { variant: "modal" | "inline" }) {
       <div
         ref={bodyRef}
         key={step}
-        className={`quick-fade px-5 pb-6 pt-5 sm:px-8 ${modal ? "min-h-0 flex-1 overflow-y-auto" : ""}`}
+        className={`quick-fade px-5 pb-6 pt-5 sm:px-8 ${modal ? "relative min-h-0 flex-1 overflow-y-auto overscroll-contain" : ""}`}
       >
         {step === 0 ? <StepJobs error={errors.jobs} /> : null}
         {step === 1 ? <StepPlace /> : null}

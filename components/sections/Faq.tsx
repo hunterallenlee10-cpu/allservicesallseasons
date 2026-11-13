@@ -6,7 +6,7 @@ import { CallButton, TextButton } from "@/components/ui/buttons";
 // Answers come from lib/business.ts, the same strings the FAQPage JSON-LD uses.
 export function Faq() {
   return (
-    <section id="faq" aria-labelledby="faq-title" className="section-y border-t border-rule">
+    <section id="faq" aria-labelledby="faq-title" className="below-fold section-y border-t border-rule">
       <div className="shell grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16">
         <div>
           <SectionHeading

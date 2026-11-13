@@ -1,9 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Figtree } from "next/font/google";
+import { Figtree } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { business, seo } from "@/lib/business";
+import { pageMetadata } from "@/lib/metadata";
 import { businessSchema, JsonLd } from "@/lib/schema";
 import { seasonForMonth } from "@/lib/services";
 import { IS_LIVE, SITE_URL } from "@/lib/site";
@@ -14,51 +16,44 @@ import { SeasonProvider } from "@/components/layout/SeasonProvider";
 import { PunchListProvider } from "@/components/PunchList/PunchListProvider";
 import { Footer } from "@/components/sections/Footer";
 
-const archivo = Archivo({
-  subsets: ["latin"],
-  axes: ["wdth"],
+// Display: Archivo (Google Fonts, OFL) at width 125, weights 700 and 800.
+// Self-hosted as a Latin subset of the expanded cut: 20KB instead of 90KB for
+// the full variable file, which matters on a phone.
+const archivo = localFont({
+  src: [
+    { path: "../assets/fonts/archivo-expanded-700.woff2", weight: "700", style: "normal" },
+    { path: "../assets/fonts/archivo-expanded-800.woff2", weight: "800", style: "normal" },
+  ],
+  declarations: [{ prop: "font-stretch", value: "125%" }],
   display: "swap",
   variable: "--font-archivo",
 });
 
+// Body: Figtree 400, 500, 600.
 const figtree = Figtree({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
   display: "swap",
   variable: "--font-figtree",
 });
 
+// Figtree italic is only used for his "From this..." captions, so it is not preloaded.
+const figtreeItalic = Figtree({
+  subsets: ["latin"],
+  weight: ["600"],
+  style: ["italic"],
+  display: "swap",
+  preload: false,
+  variable: "--font-figtree-italic",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: seo.home.title,
-  description: seo.home.description,
+  ...pageMetadata({ ...seo.home, path: "/" }),
   applicationName: business.shortName,
   // The launch switch: demo stays out of search, live is indexable.
   robots: IS_LIVE ? { index: true, follow: true } : { index: false, follow: false },
   formatDetection: { telephone: false, address: false, email: false },
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: business.name,
-    title: seo.home.title,
-    description: seo.home.description,
-    url: "/",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Your problem? Our solution. All Services All Seasons, LLC, handyman in Lancaster, PA.",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: seo.home.title,
-    description: seo.home.description,
-    images: ["/og-image.png"],
-  },
 };
 
 export const viewport: Viewport = {
@@ -73,7 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   const initialSeason = seasonForMonth(new Date().getMonth());
 
   return (
-    <html lang="en" className={`${archivo.variable} ${figtree.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${archivo.variable} ${figtree.variable} ${figtreeItalic.variable}`} suppressHydrationWarning>
       <body className="bg-ink text-paper">
         <script dangerouslySetInnerHTML={{ __html: seasonBarScript }} />
         <a
@@ -92,7 +87,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </PunchListProvider>
         </SeasonProvider>
         <JsonLd data={businessSchema()} />
-        <Analytics />
+        {/* Vercel Analytics only loads on Vercel, where its script exists. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

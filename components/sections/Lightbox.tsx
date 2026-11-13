@@ -68,7 +68,7 @@ export default function Lightbox({
       onClick={(e) => {
         if (e.target === ref.current) onClose();
       }}
-      className="quick-fade fixed inset-0 m-0 h-dvh w-full bg-ink p-0 text-paper"
+      className="quick-fade fixed inset-0 m-0 h-dvh w-full overflow-hidden bg-ink p-0 text-paper"
     >
       <div className="flex h-full flex-col">
         <div className="flex h-16 shrink-0 items-center justify-between gap-4 px-4 sm:px-6">

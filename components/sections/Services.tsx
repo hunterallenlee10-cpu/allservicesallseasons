@@ -1,9 +1,6 @@
-"use client";
-
-import { ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { GROUPS, SERVICE_NAMES, type Group, type GroupId } from "@/lib/services";
-import { usePunchList } from "@/components/PunchList/PunchListProvider";
+import { StartListButton } from "@/components/PunchList/StartListButton";
 import { Photo } from "@/components/ui/Photo";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { QuoteButton } from "@/components/ui/buttons";
@@ -39,7 +36,6 @@ function Tile({
 }
 
 function TileText({ group, className = "" }: { group: Group; className?: string }) {
-  const { open } = usePunchList();
   return (
     <div className={`flex min-w-0 flex-col ${className}`}>
       <h3 id={`${group.id}-title`} className="display text-[1.375rem] sm:text-[1.625rem]">
@@ -54,18 +50,7 @@ function TileText({ group, className = "" }: { group: Group; className?: string 
           </li>
         ))}
       </ul>
-      <button
-        type="button"
-        onClick={() => open({ group: group.id })}
-        className="label-caps mt-auto flex min-h-11 items-center gap-2 self-start pt-5 text-paper after:absolute after:inset-0 after:rounded-[10px] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-[-4px] focus-visible:after:outline-lime"
-      >
-        Start a list<span className="sr-only"> with {group.title}</span>
-        <ArrowRight
-          className="size-4 transition-transform duration-150 group-hover/tile:translate-x-1"
-          strokeWidth={2.25}
-          aria-hidden="true"
-        />
-      </button>
+      <StartListButton group={group.id} title={group.title} />
     </div>
   );
 }
@@ -74,7 +59,7 @@ const frame = "overflow-hidden rounded-md border border-rule bg-ink";
 
 export function Services() {
   return (
-    <section id="services" aria-labelledby="services-title" className="section-y">
+    <section id="services" aria-labelledby="services-title" className="below-fold section-y">
       <div className="shell">
         <SectionHeading
           index="03"

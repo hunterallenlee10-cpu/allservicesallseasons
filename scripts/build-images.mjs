@@ -66,7 +66,7 @@ const CROPS = {
   "40": { left: 0, top: 250, width: 1080, height: 830 },
 };
 
-const LADDER = [400, 640, 828, 1080, 1600];
+const LADDER = [400, 560, 720, 900, 1400];
 
 async function ensureNamed(id) {
   const named = path.join(RAW, `${NAMES[id]}.jpg`);
@@ -85,7 +85,7 @@ async function buildPhotos() {
     const meta = await sharp(buf).metadata();
     const widths = LADDER.filter((w) => w < meta.width);
     for (const w of widths) {
-      await sharp(buf).resize({ width: w }).webp({ quality: 74, effort: 6 })
+      await sharp(buf).resize({ width: w }).webp({ quality: 72, effort: 6 })
         .toFile(path.join(OUT, `${NAMES[id]}-${w}w.webp`));
     }
     await sharp(buf).webp({ quality: 78, effort: 6 }).toFile(path.join(OUT, `${NAMES[id]}.webp`));
@@ -155,7 +155,10 @@ async function buildLogo() {
   const meta = await sharp(png).metadata();
   const name = "00-logo-logo-mascot-transparent";
   await fs.writeFile(path.join(OUT, `${name}.png`), png);
-  await sharp(png).webp({ quality: 90, alphaQuality: 100, effort: 6 }).toFile(path.join(OUT, `${name}.webp`));
+  await sharp(png).webp({ quality: 86, alphaQuality: 100, effort: 6 }).toFile(path.join(OUT, `${name}.webp`));
+  // Nav size: shown 56px tall, so 168px covers 3x screens.
+  await sharp(png).resize({ height: 168 }).webp({ quality: 84, alphaQuality: 100, effort: 6 })
+    .toFile(path.join(OUT, `${name}-168h.webp`));
   console.log(`logo: ${meta.width}x${meta.height}`);
   return { width: meta.width, height: meta.height };
 }

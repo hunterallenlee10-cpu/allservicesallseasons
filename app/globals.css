@@ -19,7 +19,6 @@
   html {
     background: var(--color-ink);
     color: var(--color-paper);
-    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -71,9 +70,6 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
     *,
     *::before,
     *::after {
@@ -109,6 +105,7 @@
   position: absolute;
   right: 0.875rem;
   bottom: 0.625rem;
+  font-family: var(--font-figtree-italic), var(--font-sans);
   font-style: italic;
   font-weight: 600;
   font-size: clamp(1.25rem, 4.6vw, 1.75rem);
@@ -141,6 +138,13 @@
   @media (min-width: 64rem) {
     padding-block: 7.5rem;
   }
+}
+
+/* Below-the-fold sections: the browser skips their layout and paint until they
+   are near the screen. Keeps the first render on a phone quick. */
+@utility below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 @utility no-scrollbar {

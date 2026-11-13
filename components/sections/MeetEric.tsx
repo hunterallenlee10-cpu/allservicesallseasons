@@ -7,7 +7,7 @@ import { TickBox, Ticket } from "@/components/ui/Ticket";
 // behind the phone number.
 export function MeetEric() {
   return (
-    <section id="meet-eric" aria-labelledby="meet-eric-title" className="section-y">
+    <section id="meet-eric" aria-labelledby="meet-eric-title" className="below-fold section-y">
       <div className="shell">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:items-center lg:gap-16">
           {/* Photos: the crew at work, and a Lancaster row home. */}

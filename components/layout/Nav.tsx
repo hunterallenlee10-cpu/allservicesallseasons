@@ -36,8 +36,8 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-40 border-b border-rule bg-ink">
       <div className="shell flex h-[68px] items-center gap-3">
-        <Link href="/" className="flex shrink-0 items-center gap-3" aria-label={`${business.name}, home`}>
-          <Logo className="h-14" priority decorative />
+        <Link href="/" prefetch={false} className="flex shrink-0 items-center gap-3" aria-label={`${business.name}, home`}>
+          <Logo className="h-14" priority decorative small />
           <span className="display text-[0.8125rem] leading-[1.15] tracking-[0.02em] nav:text-[0.875rem]">
             All Services
             <br />
@@ -49,12 +49,13 @@ export function Nav() {
           <ul className="flex items-center gap-6">
             {LINKS.map((link) => (
               <li key={link.href}>
-                <Link
+                {/* Plain anchors: the browser's own hash jump is exact, on this page or from /contact. */}
+                <a
                   href={link.href}
                   className="inline-flex min-h-11 items-center text-[0.9375rem] font-medium text-muted transition-colors hover:text-paper"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -95,12 +96,12 @@ export function Nav() {
         ref={sheet}
         aria-label="Menu"
         onClose={() => setMenuOpen(false)}
-        className="fixed inset-0 m-0 h-dvh w-full bg-ink p-0 text-paper"
+        className="fixed inset-0 m-0 h-dvh w-full overflow-hidden bg-ink p-0 text-paper"
       >
         <div className="flex h-full flex-col">
           <div className="shell flex h-[68px] shrink-0 items-center justify-between border-b border-rule">
             <span className="flex items-center gap-3">
-              <Logo className="h-14" decorative />
+              <Logo className="h-14" decorative small />
               <span className="display text-[0.8125rem] leading-[1.15] tracking-[0.02em]">
                 All Services
                 <br />
@@ -120,14 +121,14 @@ export function Nav() {
             <ul>
               {[...LINKS, { href: "/contact", label: "Contact" }].map((link, i) => (
                 <li key={link.href} className="border-b border-dashed border-rule">
-                  <Link
+                  <a
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     className="flex min-h-[60px] items-center gap-4 py-2"
                   >
                     <span className="label-caps w-6 text-muted">{String(i + 1).padStart(2, "0")}</span>
                     <span className="display text-[1.375rem]">{link.label}</span>
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

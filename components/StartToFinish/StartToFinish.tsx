@@ -1,8 +1,8 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { animate, useMotionValue } from "framer-motion";
-import { useCallback, useEffect, useRef, useState, type KeyboardEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent } from "react";
+import { loadMotion, prefersReducedMotion, type MotionControls } from "@/lib/motion";
 import { photoSrcSet } from "@/lib/photos";
 import { PROJECTS, type Project } from "@/lib/projects";
 import { TickBox } from "@/components/ui/Ticket";
@@ -28,33 +28,33 @@ export function StartToFinish() {
   const total = project.stages.length;
   const last = total - 1;
 
-  const value = useMotionValue(0); // float, 0 to last
+  // The slider value: a float from 0 to the last stage. It lives in a ref and in
+  // one CSS variable (--v) on the photo stage, which the stage photos read for
+  // their opacity. Framer Motion animates the number.
+  const value = useRef(0);
   const input = useRef<HTMLInputElement>(null);
-  const panel = useRef<HTMLDivElement>(null);
-  const motion = useRef<ReturnType<typeof animate> | null>(null);
+  const stageEl = useRef<HTMLDivElement>(null);
+  const motion = useRef<MotionControls | null>(null);
   const autoplayed = useRef(false);
-  const reduce = useRef(false);
+  const lastRef = useRef(last);
+  lastRef.current = last;
 
-  useEffect(() => {
-    reduce.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Keep the photos, the range input, the lime fill and the stage counter in step.
+  const setValue = useCallback((next: number) => {
+    const max = lastRef.current;
+    const v = Math.min(max, Math.max(0, next));
+    value.current = v;
+    stageEl.current?.style.setProperty("--v", String(v));
+    const el = input.current;
+    if (el) {
+      el.value = String(Math.round(v * STEP));
+      el.style.setProperty("--stf-fill", `${max === 0 ? 0 : (v / max) * 100}%`);
+    }
+    setStage((prev) => {
+      const nearest = Math.round(v);
+      return prev === nearest ? prev : nearest;
+    });
   }, []);
-
-  // Keep the range input, the lime fill and the stage counter in step with the value.
-  useEffect(() => {
-    const sync = (v: number) => {
-      const el = input.current;
-      if (el) {
-        el.value = String(Math.round(v * STEP));
-        el.style.setProperty("--stf-fill", `${last === 0 ? 0 : (v / last) * 100}%`);
-      }
-      setStage((prev) => {
-        const nearest = Math.min(last, Math.max(0, Math.round(v)));
-        return prev === nearest ? prev : nearest;
-      });
-    };
-    sync(value.get());
-    return value.on("change", sync);
-  }, [value, last]);
 
   const stop = useCallback(() => {
     autoplayed.current = true;
@@ -64,45 +64,62 @@ export function StartToFinish() {
   const goTo = useCallback(
     (target: number) => {
       stop();
-      const clamped = Math.min(last, Math.max(0, target));
-      if (reduce.current) value.set(clamped);
-      else motion.current = animate(value, clamped, { duration: 0.28, ease: "easeOut" });
+      const clamped = Math.min(lastRef.current, Math.max(0, target));
+      if (prefersReducedMotion()) {
+        setValue(clamped);
+        return;
+      }
+      loadMotion().then(({ animate }) => {
+        motion.current?.stop();
+        motion.current = animate(value.current, clamped, {
+          duration: 0.28,
+          ease: "easeOut",
+          onUpdate: setValue,
+        });
+      });
     },
-    [last, stop, value],
+    [setValue, stop],
   );
 
   // Plays once through the gazebo, about 3 seconds, the first time it is on screen.
   useEffect(() => {
-    const el = panel.current;
+    // Watch the photo itself, so on a phone it starts when the photo is in view.
+    const el = stageEl.current;
     if (!el) return;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || autoplayed.current) return;
         autoplayed.current = true;
         io.disconnect();
-        if (reduce.current) return;
-        motion.current = animate(value, PROJECTS[0].stages.length - 1, {
-          delay: 0.4,
-          duration: 3,
-          ease: "easeInOut",
+        if (prefersReducedMotion()) return;
+        loadMotion().then(({ animate }) => {
+          // Only if the visitor has not already taken the slider.
+          if (motion.current || value.current !== 0) return;
+          motion.current = animate(0, PROJECTS[0].stages.length - 1, {
+            delay: 0.4,
+            duration: 3,
+            ease: "easeInOut",
+            onUpdate: setValue,
+          });
         });
       },
-      { threshold: 0.55 },
+      { threshold: 0.6 },
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [value]);
+  }, [setValue]);
 
   function pickProject(index: number) {
     if (index === projectIndex) return;
     stop();
-    value.set(0);
-    setStage(0);
+    // Reset before the new project's (possibly shorter) stage list renders.
+    lastRef.current = PROJECTS[index].stages.length - 1;
+    setValue(0);
     setProjectIndex(index);
   }
 
   function onKeyDown(e: KeyboardEvent<HTMLInputElement>) {
-    const current = Math.round(value.get());
+    const current = Math.round(value.current);
     let target: number | null = null;
     if (e.key === "ArrowRight" || e.key === "ArrowUp" || e.key === "PageUp") target = current + 1;
     if (e.key === "ArrowLeft" || e.key === "ArrowDown" || e.key === "PageDown") target = current - 1;
@@ -147,13 +164,16 @@ export function StartToFinish() {
       </div>
 
       <div
-        ref={panel}
         className="mt-5 grid max-w-[1040px] overflow-hidden rounded-[10px] border border-rule bg-ticket md:grid-cols-[minmax(0,520px)_minmax(0,1fr)]"
       >
         {/* Photo stage */}
-        <div className="relative aspect-square w-full select-none bg-ink">
+        <div
+          ref={stageEl}
+          style={{ "--v": 0 } as CSSProperties}
+          className="relative aspect-square w-full select-none bg-ink"
+        >
           {project.stages.map((s, i) => (
-            <StageLayer key={`${project.id}-${i}`} value={value} index={i} total={total} photo={s.photo} />
+            <StageLayer key={`${project.id}-${i}`} index={i} total={total} photo={s.photo} />
           ))}
         </div>
 
@@ -182,11 +202,11 @@ export function StartToFinish() {
               aria-valuetext={`Stage ${stage + 1} of ${total}, ${label}`}
               onInput={(e) => {
                 stop();
-                value.set(Number(e.currentTarget.value) / STEP);
+                setValue(Number(e.currentTarget.value) / STEP);
               }}
-              onPointerUp={() => goTo(Math.round(value.get()))}
-              onTouchEnd={() => goTo(Math.round(value.get()))}
-              onBlur={() => goTo(Math.round(value.get()))}
+              onPointerUp={() => goTo(Math.round(value.current))}
+              onTouchEnd={() => goTo(Math.round(value.current))}
+              onBlur={() => goTo(Math.round(value.current))}
               onKeyDown={onKeyDown}
               className="stf-range relative z-10 block"
             />

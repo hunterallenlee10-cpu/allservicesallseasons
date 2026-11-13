@@ -5,7 +5,7 @@ import { CallButton, QuoteButton } from "@/components/ui/buttons";
 // The only full-width photo on the site: the finished gazebo, darkened.
 export function FinalCta({ heading = "Got a list? Hand it over." }: { heading?: string }) {
   return (
-    <section aria-labelledby="final-cta-title" className="relative isolate mx-auto max-w-[2000px] overflow-hidden border-t border-rule">
+    <section aria-labelledby="final-cta-title" className="below-fold relative isolate mx-auto max-w-[2000px] overflow-hidden border-t border-rule">
       <Photo id="01" alt="" sizes="100vw" className="absolute inset-0 -z-20 size-full object-cover" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/55" />
       <div className="shell flex min-h-[460px] flex-col items-start justify-center py-20 lg:min-h-[560px] lg:py-28">

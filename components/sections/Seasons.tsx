@@ -63,7 +63,7 @@ export function Seasons() {
   const allTicked = season.jobs.every((id) => form.services.includes(id));
 
   return (
-    <section id="seasons" aria-labelledby="seasons-title" className="section-y">
+    <section id="seasons" aria-labelledby="seasons-title" className="below-fold section-y">
       <div className="shell">
         <SectionHeading
           index="01"

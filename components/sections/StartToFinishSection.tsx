@@ -7,7 +7,7 @@ export function StartToFinishSection() {
     <section
       id="start-to-finish"
       aria-labelledby="start-to-finish-title"
-      className="section-y border-y border-rule"
+      className="below-fold section-y border-y border-rule"
     >
       <div className="shell">
         <div className="mx-auto max-w-[1040px]">

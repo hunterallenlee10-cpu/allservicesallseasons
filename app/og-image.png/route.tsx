@@ -7,15 +7,15 @@ import { business } from "@/lib/business";
 // The link preview: 1200x630, built once at build time from his own photo and logo.
 export const dynamic = "force-static";
 
-const file = (p: string) => readFile(path.join(process.cwd(), p));
+const root = process.cwd();
 const dataUri = (buf: Buffer, type: string) => `data:${type};base64,${buf.toString("base64")}`;
 
 export async function GET() {
   const [photo, logo, archivo, figtree] = await Promise.all([
-    file("assets/raw/01-gazebo-finished-wide-BEST.jpg"),
-    file("public/images/00-logo-logo-mascot-transparent.png"),
-    file("assets/fonts/Archivo-Expanded-ExtraBold.ttf"),
-    file("assets/fonts/Figtree-Medium.ttf"),
+    readFile(path.join(root, "assets/raw/01-gazebo-finished-wide-BEST.jpg")),
+    readFile(path.join(root, "public/images/00-logo-logo-mascot-transparent.png")),
+    readFile(path.join(root, "assets/fonts/Archivo-Expanded-ExtraBold.ttf")),
+    readFile(path.join(root, "assets/fonts/Figtree-Medium.ttf")),
   ]);
 
   const image = new ImageResponse(

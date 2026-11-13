@@ -6,6 +6,6 @@ import { IS_LIVE, absoluteUrl } from "@/lib/site";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [{ userAgent: "*", allow: "/" }],
-    ...(IS_LIVE ? { sitemap: absoluteUrl("/sitemap.xml"), host: absoluteUrl("/").replace(/\/$/, "") } : {}),
+    ...(IS_LIVE ? { sitemap: absoluteUrl("/sitemap.xml") } : {}),
   };
 }

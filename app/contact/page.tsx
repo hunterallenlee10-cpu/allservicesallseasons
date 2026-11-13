@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Mail, MessageSquare, Phone } from "lucide-react";
 import { business, seo } from "@/lib/business";
+import { pageMetadata } from "@/lib/metadata";
 import { contactBreadcrumbSchema, JsonLd } from "@/lib/schema";
 import { PunchListInline } from "@/components/PunchList/PunchListInline";
 import { FinalCta } from "@/components/sections/FinalCta";
@@ -8,13 +9,7 @@ import { ServiceAreaSketch } from "@/components/sections/ServiceAreaSketch";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Ticket } from "@/components/ui/Ticket";
 
-export const metadata: Metadata = {
-  title: seo.contact.title,
-  description: seo.contact.description,
-  alternates: { canonical: "/contact" },
-  openGraph: { title: seo.contact.title, description: seo.contact.description, url: "/contact" },
-  twitter: { title: seo.contact.title, description: seo.contact.description },
-};
+export const metadata: Metadata = pageMetadata({ ...seo.contact, path: "/contact" });
 
 export const revalidate = 3600;
 
@@ -25,7 +20,6 @@ const TILES = [
     href: business.phoneHref,
     note: "The quickest way to reach us.",
     icon: Phone,
-    cta: `Call ${business.phoneDisplay}`,
   },
   {
     label: "Text",
@@ -33,7 +27,6 @@ const TILES = [
     href: business.smsHref,
     note: "Send your list. Photos help.",
     icon: MessageSquare,
-    cta: `Text ${business.phoneDisplay}`,
   },
   {
     label: "Email",
@@ -41,7 +34,6 @@ const TILES = [
     href: `mailto:${business.email}`,
     note: "For longer lists and details.",
     icon: Mail,
-    cta: `Email ${business.email}`,
   },
 ];
 
@@ -66,7 +58,6 @@ export default function ContactPage() {
               <li key={tile.label}>
                 <a
                   href={tile.href}
-                  aria-label={tile.cta}
                   className="group flex h-full flex-col rounded-[10px] border border-rule bg-ticket p-5 transition-colors hover:border-paper sm:p-6"
                 >
                   <span className="flex items-center justify-between">
@@ -89,7 +80,7 @@ export default function ContactPage() {
       </section>
 
       {/* The builder sits on the paper band. */}
-      <section aria-labelledby="builder-title" className="section-y bg-paper text-ink">
+      <section aria-labelledby="builder-title" className="below-fold section-y bg-paper text-ink">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,7fr)] lg:gap-16">
           <div className="on-paper">
             <SectionHeading
@@ -113,7 +104,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section aria-labelledby="area-title" className="section-y">
+      <section aria-labelledby="area-title" className="below-fold section-y">
         <div className="shell">
           <SectionHeading
             index="02"

@@ -32,9 +32,9 @@ export default function PunchListModal() {
       onClick={(e) => {
         if (e.target === ref.current) close();
       }}
-      className="quick-fade fixed inset-0 m-0 h-dvh w-full bg-transparent p-0 text-paper sm:grid sm:place-items-center sm:p-6"
+      className="quick-fade fixed inset-0 m-0 h-dvh w-full overflow-hidden bg-transparent p-0 text-paper sm:grid sm:place-items-center sm:p-6"
     >
-      <div className="relative flex h-dvh w-full flex-col border-rule bg-ticket sm:h-auto sm:max-h-[min(860px,calc(100dvh-48px))] sm:max-w-[680px] sm:rounded-[10px] sm:border">
+      <div className="relative flex h-dvh w-full flex-col overflow-hidden border-rule bg-ticket sm:h-auto sm:max-h-[min(860px,calc(100dvh-48px))] sm:max-w-[680px] sm:rounded-[10px] sm:border">
         <button
           type="button"
           onClick={close}

@@ -5,14 +5,17 @@ export function Logo({
   className = "",
   priority = false,
   decorative = false,
+  small = false,
 }: {
   className?: string;
   priority?: boolean;
   decorative?: boolean;
+  // Nav size. Uses a lighter file.
+  small?: boolean;
 }) {
   return (
     <img
-      src={LOGO.webp}
+      src={small ? LOGO.small : LOGO.webp}
       width={LOGO.width}
       height={LOGO.height}
       alt={decorative ? "" : LOGO.alt}

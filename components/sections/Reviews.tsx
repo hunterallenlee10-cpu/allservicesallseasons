@@ -14,7 +14,7 @@ const SAMPLES = [
 export function Reviews() {
   const years = business.nextdoor_winner_years;
   return (
-    <section aria-labelledby="reviews-title" className="section-y border-t border-rule">
+    <section aria-labelledby="reviews-title" className="below-fold section-y border-t border-rule">
       <div className="shell">
         <SectionHeading index="07" label="Word of mouth" id="reviews-title" title="What neighbors say" />
 

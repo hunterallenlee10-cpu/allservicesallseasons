@@ -6,15 +6,17 @@ type Props = {
   sizes: string;
   alt?: string;
   priority?: boolean;
+  // Load now, but let more important images go first.
+  eager?: boolean;
   className?: string;
   draggable?: boolean;
 };
 
 // Plain responsive <img>. Variants are pre-built by scripts/build-images.mjs,
 // so there is no runtime image optimiser and no layout shift.
-export function Photo({ id, sizes, alt, priority = false, className, draggable }: Props) {
+export function Photo({ id, sizes, alt, priority = false, eager = false, className, draggable }: Props) {
   const p = getPhoto(id);
-  const fallback = p.widths.includes(828) ? 828 : undefined;
+  const fallback = p.widths.includes(720) ? 720 : undefined;
   return (
     <img
       src={photoSrc(id, fallback)}
@@ -23,9 +25,9 @@ export function Photo({ id, sizes, alt, priority = false, className, draggable }
       width={p.width}
       height={p.height}
       alt={alt ?? p.alt}
-      loading={priority ? "eager" : "lazy"}
-      fetchPriority={priority ? "high" : undefined}
-      decoding={priority ? "sync" : "async"}
+      loading={priority || eager ? "eager" : "lazy"}
+      fetchPriority={priority ? "high" : eager ? "low" : undefined}
+      decoding="async"
       draggable={draggable}
       className={className}
     />

@@ -12,7 +12,7 @@ export function SeasonalBand() {
   const winter = season.id === "winter";
 
   return (
-    <section aria-labelledby="seasonal-title" className="pb-[4.5rem] lg:pb-[7.5rem]">
+    <section aria-labelledby="seasonal-title" className="below-fold pb-[4.5rem] lg:pb-[7.5rem]">
       <div className="shell">
         <div className="grid overflow-hidden rounded-[10px] border border-rule bg-ticket lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
           <div className="p-6 sm:p-10">

@@ -47,7 +47,7 @@ export function OurWork() {
   }, []);
 
   return (
-    <section id="our-work" aria-labelledby="our-work-title" className="on-paper section-y bg-paper text-ink">
+    <section id="our-work" aria-labelledby="our-work-title" className="below-fold on-paper section-y bg-paper text-ink">
       <div className="shell">
         <SectionHeading
           index="04"

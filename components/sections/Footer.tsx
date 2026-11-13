@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { ArrowUpRight, Mail, MessageSquare, Phone } from "lucide-react";
 import { business } from "@/lib/business";
 import { ALL_SERVICES, SERVICE_NAMES } from "@/lib/services";
@@ -121,12 +120,12 @@ export function Footer() {
               { href: "/contact", label: "Contact" },
             ].map((link) => (
               <li key={link.href}>
-                <Link
+                <a
                   href={link.href}
                   className="inline-flex min-h-11 items-center font-medium text-muted hover:text-paper"
                 >
                   {link.label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
