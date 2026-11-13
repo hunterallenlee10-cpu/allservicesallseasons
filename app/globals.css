@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+/* Design tokens: 3 colours plus text. */
+@theme {
+  --color-ink: #0e100c;
+  --color-ticket: #181b15;
+  --color-rule: #2a2e24;
+  --color-lime: #cad945;
+  --color-paper: #f4f3ea;
+  --color-muted: #a6a998;
+
+  --font-display: var(--font-archivo), "Arial Black", "Helvetica Neue", sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  --breakpoint-nav: 74rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+  }
+
+  /* Lime never sits on paper as a line or text, so focus rings go dark there. */
+  .on-paper :focus-visible {
+    outline-color: var(--color-ink);
+  }
+
+  ::selection {
+    background: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  button,
+  [role="tab"],
+  summary {
+    cursor: pointer;
+  }
+
+  dialog {
+    max-width: none;
+    max-height: none;
+  }
+
+  dialog::backdrop {
+    background: rgb(14 16 12 / 0.82);
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Wide capitals, the grown-up version of the small caps on his Facebook cover. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  line-height: 0.98;
+  letter-spacing: -0.005em;
+}
+
+/* Small caps label in the corner of a job ticket. */
+@utility label-caps {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  line-height: 1.25;
+  letter-spacing: 0.08em;
+}
+
+/* His own caption style: white italic, bottom right, with a dark edge. */
+@utility photo-caption {
+  position: absolute;
+  right: 0.875rem;
+  bottom: 0.625rem;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 4.6vw, 1.75rem);
+  line-height: 1;
+  color: var(--color-paper);
+  text-shadow:
+    1px 1px 0 var(--color-ink),
+    -1px 1px 0 var(--color-ink),
+    1px -1px 0 var(--color-ink),
+    -1px -1px 0 var(--color-ink);
+  pointer-events: none;
+  user-select: none;
+}
+
+@utility shell {
+  width: 100%;
+  max-width: 78rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (min-width: 40rem) {
+    padding-inline: 1.5rem;
+  }
+  @media (min-width: 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility section-y {
+  padding-block: 4.5rem;
+  @media (min-width: 64rem) {
+    padding-block: 7.5rem;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* 150ms fade for tab and step changes. Not a motion piece. */
+@keyframes quick-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility quick-fade {
+  animation: quick-fade 150ms ease-out both;
+}
+
+/* Season bar dismissed for this session (set before paint by an inline script). */
+html[data-season-bar="off"] .season-bar {
+  display: none;
+}
+
+/* Start to Finish slider: a real range input styled as a lime track. */
+.stf-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 44px;
+  background: transparent;
+  margin: 0;
+  touch-action: pan-y;
+}
+.stf-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    var(--color-lime) 0 var(--stf-fill, 0%),
+    var(--color-rule) var(--stf-fill, 0%) 100%
+  );
+}
+.stf-range::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-rule);
+}
+.stf-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-lime);
+}
+.stf-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 28px;
+  margin-top: -12px;
+  border-radius: 6px;
+  background: var(--color-lime);
+  border: 3px solid var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-lime);
+  cursor: grab;
+}
+.stf-range::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: var(--color-lime);
+  border: 3px solid var(--color-ink);
+  box-shadow: 0 0 0 1px var(--color-lime);
+  cursor: grab;
+}
+.stf-range:active::-webkit-slider-thumb {
+  cursor: grabbing;
+}
+.stf-range:focus-visible {
+  outline: none;
+}
+.stf-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 3px;
+}
+.stf-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid var(--color-paper);
+  outline-offset: 3px;
+}
